@@ -1,0 +1,77 @@
+{
+  "properties": {
+    "displayName": "Require Essential Tags on Resource Groups",
+    "policyType": "Custom",
+    "mode": "All",
+    "description": "This policy enforces the existence of four essential tags on resource groups: Environment, Owner, CostCenter, and Application to enable proper governance and cost management.",
+    "metadata": {
+      "category": "Governance",
+      "description": "Resource groups must have Environment, Owner, CostCenter, and Application tags for effective cost allocation and resource management.",
+      "non_compliance_message": "Resource group must have all required tags: Environment, Owner, CostCenter, and Application.",
+      "version": "1.0.0",
+      "createdBy": "CloudCostChefs"
+    },
+    "version": "1.0.0",
+    "parameters": {
+      "requiredTags": {
+        "type": "Array",
+        "metadata": {
+          "description": "Array of required tag names that must be present on all resource groups",
+          "displayName": "Required Tags"
+        },
+        "defaultValue": [
+          "Environment",
+          "Owner", 
+          "CostCenter",
+          "Application"
+        ]
+      },
+      "effect": {
+        "type": "String",
+        "metadata": {
+          "description": "The effect determines what happens when the policy rule is evaluated to match",
+          "displayName": "Effect"
+        },
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Resources/subscriptions/resourceGroups",
+            "field": "type"
+          },
+          {
+            "anyOf": [
+              {
+                "exists": "false",
+                "field": "tags['Environment']"
+              },
+              {
+                "exists": "false", 
+                "field": "tags['Owner']"
+              },
+              {
+                "exists": "false",
+                "field": "tags['CostCenter']"
+              },
+              {
+                "exists": "false",
+                "field": "tags['Application']"
+              }
+            ]
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    }
+  }
+}
