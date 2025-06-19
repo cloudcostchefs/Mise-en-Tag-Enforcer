@@ -1,0 +1,113 @@
+{
+  "tags": {
+    "Environment": {
+      "tag_key": {
+        "@@assign": "Environment"
+      },
+      "tag_value": {
+        "@@assign": [
+          "Production",
+          "Development",
+          "Test", 
+          "Staging"
+        ]
+      },
+      "enforced_for": {
+        "@@assign": [
+          "ec2:instance",
+          "ec2:volume",
+          "ec2:security-group",
+          "ec2:vpc",
+          "ec2:subnet",
+          "s3:bucket",
+          "rds:db",
+          "rds:cluster",
+          "lambda:function",
+          "ecs:service",
+          "ecs:cluster",
+          "eks:cluster",
+          "elasticloadbalancing:loadbalancer",
+          "elasticloadbalancing:targetgroup"
+        ]
+      }
+    },
+    "Owner": {
+      "tag_key": {
+        "@@assign": "Owner"
+      },
+      "tag_value": {
+        "@@assign": ".*"
+      },
+      "enforced_for": {
+        "@@assign": [
+          "ec2:instance",
+          "ec2:volume",
+          "ec2:security-group",
+          "ec2:vpc",
+          "ec2:subnet",
+          "s3:bucket",
+          "rds:db",
+          "rds:cluster",
+          "lambda:function",
+          "ecs:service",
+          "ecs:cluster",
+          "eks:cluster",
+          "elasticloadbalancing:loadbalancer",
+          "elasticloadbalancing:targetgroup"
+        ]
+      }
+    },
+    "CostCenter": {
+      "tag_key": {
+        "@@assign": "CostCenter"
+      },
+      "tag_value": {
+        "@@assign": ".*"
+      },
+      "enforced_for": {
+        "@@assign": [
+          "ec2:instance",
+          "ec2:volume",
+          "ec2:security-group",
+          "ec2:vpc",
+          "ec2:subnet",
+          "s3:bucket",
+          "rds:db",
+          "rds:cluster",
+          "lambda:function",
+          "ecs:service",
+          "ecs:cluster",
+          "eks:cluster",
+          "elasticloadbalancing:loadbalancer",
+          "elasticloadbalancing:targetgroup"
+        ]
+      }
+    },
+    "Application": {
+      "tag_key": {
+        "@@assign": "Application"
+      },
+      "tag_value": {
+        "@@assign": ".*"
+      },
+      "enforced_for": {
+        "@@assign": [
+          "ec2:instance",
+          "ec2:volume",
+          "ec2:security-group",
+          "ec2:vpc",
+          "ec2:subnet",
+          "s3:bucket",
+          "rds:db",
+          "rds:cluster",
+          "lambda:function",
+          "ecs:service",
+          "ecs:cluster",
+          "eks:cluster",
+          "elasticloadbalancing:loadbalancer",
+          "elasticloadbalancing:targetgroup"
+        ]
+      }
+    }
+  }
+}
